@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Falling eatable items</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center">
+        <canvas id="fallCanvas" width="600" height="800"></canvas>
+    </div>
+
+    <script>
+        ////ПЕРЕМЕННЫЕ И ОБЪЕКТЫ////
+        let canvas = document.getElementById("fallCanvas"); //Получим холст из документа
+        let ctx = canvas.getContext("2d"); //Получим контекст 
+        //Объявляем переменные
+        let score = 0, //счёт
+            BasketSpeed = 10, //скорость корзины
+            BasketX = 250, //Начальное положение корзины
+            BasketWidth = 90, //ширина корзины
+            maxscore = 5, //победный счёт 
+            lives = 3, //жизни
+            fwidth = 50, //ширина картинки
+            fheight = 50, //высота картинки
+            width = canvas.width, //ширина холста
+            height = canvas.height, //высота холста
+            numberitems = 3; //количество предметов
+        //Интервал вызова функции анимации (60)
+        let intervalId = setInterval(animation, 60)
+
+        //Объявляем объекты
+        let keyPresses = {}; //
+        //Объявим ВСЕ возможные фрукты и овощи (название и тип (фрукт/овощ))
+        let apple = {
+            name: 'apple',
+            type: 'fruit'
+        }
+        let banana = {
+            name: 'banana',
+            type: 'fruit'
+        }
+        let avokado = {
+            name: 'avokado',
+            type: 'fruit'
+        }
+        let cucumber = {
+            name: 'cucumber',
+            type: 'veget'
+        }
+        let hren = {
+            name: 'hren',
+            type: 'veget'
+        }
+        let orange = {
+            name: 'orange',
+            type: 'fruit'
+        }
+        let potato = {
+            name: 'potato',
+            type: 'veget'
+        }
+        let tikva = {
+            name: 'tikva',
+            type: 'veget'
+        }
+        let tomato = {
+            name: 'tomato',
+            type: 'veget'
+        }
+
+        //создаём корзину
+        let Basket = new Object(); //новый объект - корзинка
+        Basket["speed"] = BasketSpeed; //
+        Basket["image"] = new Image();
+        Basket.image.src = 'img/basket.png';
+        Basket["x"] = BasketX;
+
+        ////МАССИВЫ////
+        //Объявим массив, в качестве элементов которого фрукты и овощи (объектики)
+        let objArray = [
+            apple,
+            banana,
+            avokado,
+            cucumber,
+            hren,
+            orange,
+            potato,
+            tikva,
+            tomato
+        ];
+        //Объявим массив items, из которого буду выбираться предметы для запуска
+        let items = [];
+
+        //Заполним массив возможных объектов изображениями, начальными координатами и скоростью
+        for (let i = 0; i < objArray.length; i++) {
+            let fallingItem = new Object();
+            fallingItem["image"] = new Image(fwidth, fheight);
+            fallingItem.image.src = 'img/' + objArray[i].name + '.png';
+            fallingItem["x"] = randomInt(0, width - fwidth);
+            fallingItem["y"] = randomInt(-200, 0);
+            fallingItem["speed"] = randomInt(5, 7); //скорость
+            fallingItem["type"] = objArray[i].type;
+            fallingItem["name"] = objArray[i].name;
+            items.push(fallingItem);
+            console.log(fallingItem.name);
+        }
+        items.sort(() => Math.random() - 0.5); //перемешиваем массив, чтобы изначально падали случайные предметы
+
+        ////ГЛАВНАЯ ФУНКЦИЯ////
+        //Функция анимации:
+        //1. Очищает холст
+        //2. Отслеживает нажатие клавиш и вызывает функцию смещения корзинки
+        //3. Вызывает для заданного кол-ва элементов (numberitems) в цикле функции отрисовки, движения и проверки координат (если надо, завершает игру)
+
+        function animation() {
+            ctx.clearRect(0, 0, width, height); //очищаем холст
+            //рисуем фон
+            imgBg = new Image();
+            imgBg.src = 'backs/2.jpg';
+            ctx.drawImage(imgBg, 0, 0, width, height);
+
+            //Отслеживаем клавиши движения (и двигаем корзинку если нажата нужная кнопка)
+            if (keyPresses.ф || keyPresses.Ф || keyPresses.a || keyPresses.A) { //если нажата эта клавиша - движение влево
+                moveBasket(Basket, -Basket.speed);
+            } else if (keyPresses.d || keyPresses.D || keyPresses.в || keyPresses.В) { //если нажата эта клавиша - движение вправо
+                moveBasket(Basket, Basket.speed);
+            }
+
+            for (var j = 0; j < numberitems; j++) {
+                item = items[j];
+                draw(item); //отрисовка (предмета)
+                moveitems(item); //движение (предмета)
+                checkCollision(item, Basket); //проверка координат (предмет и корзина)
+            }
+
+            //рисуем сердце/череп (зависит от того, проиграл ли ты)
+            imgHeart = new Image(); //объявляем новый объект для картинки сердцечка
+            imgHeart.src = 'img/heart.png'; //загружаем изображение
+            imgDied = new Image(); //объявляем новый объект для картинки черепа
+            imgDied.src = 'img/died.png'; //загружаем изображение
+
+            if (lives !== 0) { //если жизни ещё есть, рисуем сердечко
+                ctx.drawImage(imgHeart, 20, 70);
+            }
+            if (lives == 0) { //если жизней не осталось, рисуем череп (проигрыш)
+                ctx.drawImage(imgDied, 20, 70);
+            }
+
+            //рисуем строку с ост. жизнями, очки и название игры
+            drawHearts(); //вызов функции отрисовки строки с ост. жизнями
+            drawScore(); //вызов функции отрисовки строки со счётом
+            drawName(); //вызов функции отрисовки строки с названием игры
+        }
+
+        ////ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ////
+
+        //Функция двигает корзину
+        let moveBasket = function(Basket, BasketSpeed) {
+            Basket.x += BasketSpeed; // Х корзины = Х корзины + скорость корзины
+            checkCollisionBasket(Basket); //вызываем функцию проверки положения корзины
+        }
+
+        //Функция рисует предмет
+        let draw = function(object) {
+                ctx.drawImage(object.image, object.x, object.y); //рисуем объект
+                ctx.drawImage(Basket.image, Basket.x, height - 100); //рисуем корзину
+            }
+            //Функция двигает предмет
+        let moveitems = function(object) {
+            object.y += object.speed; // Х объекта = Х объекта + скорость объекта
+        }
+
+        //Эта функция проверяет столкновение с дном / корзиной
+        let checkCollision = function(object, Basket) {
+
+            if (object.y >= height) { //если координата верха объекта >= высоте холста, то
+                if (object.type == 'fruit') { //если объект - фрукт
+                    lives -= 1; //отнять жизнь
+                    if (lives == 0) { //если жизней не осталось, то 
+                        gameOver(); //завершить игру
+                    }
+                }
+                changeItem(object); //сменить объект т.к. он упал и несъедобен
+            }
+            if (object.x - Basket.x <= 70 && object.x - Basket.x >= -30) { //сравниваем положение объекта и корзины по оси Х
+                console.log((object.x - Basket.x) + '  -  Ловится  ' + object.name + ' - ' + object.type); //при таком положении объект будет пойман, выводим сообщение в консоль
+            }
+
+            if (object.y >= (height - 55)) { //если Y объекта >= высота холста - 55, то
+                if (object.x - Basket.x <= 70 && object.x - Basket.x >= -30) { //если объект в радиусе поимки, то
+                    if (object.type == 'fruit') { //если это фрукт, то
+                        console.log('Поймал фрукт');
+                        score += 1; //увеличить счёт на 1
+                        if (score == maxscore) { //если счёт максимален, то
+                            gameOver() //завершить игру
+                        }
+                        changeItem(object); //сменить объект т.к. пойман и порезан в салат
+                    } else if (object.type == 'veget') { //иначе, если это овощ, то
+                        console.log('Поймал овощ');
+                        lives -= 1; //отнять жизнь
+                        if (lives == 0) { //если жизней не осталось, то 
+                            gameOver() //завершить игру
+                        }
+                        changeItem(object); //сменить объект т.к. он упал
+                    }
+                }
+            }
+        }
+
+        //Эта функшн меняет объект (выбирает новый объект из массива по случ. индексу и меняет его свойства)
+        let changeItem = function(object) {
+            object.y = 0; //переставляем объект наверх холста
+            object.x = randomInt(0, width - fwidth); //выбираем рандомный X от 0 до ширина холста - ширина объекта
+            object.speed = randomInt(4, 10); //выбираем рандомную скорость от 4 до 10
+            q = randomInt(0, objArray.length); //рандомим q от 0 до длины массива objArray. q - индекс, по которому
+            object.image = items[q].image; //выбираем картинку
+            object.type = items[q].type; //тип
+            object.name = items[q].name; //и имя объекта
+        }
+
+        //Эта функшн проверяет не ушла ли корзинка за границы холста, и если да, возвращает её на границу
+        let checkCollisionBasket = function(Basket) {
+            if (Basket.x < 0) { //если левый край корзины ушёл за левый край холста, то
+                Basket.x = 0; //вернуть её на границу
+            } else if ((Basket.x + BasketWidth) > width) { //если правый край корзины ушёл за правый край холста, то
+                Basket.x = width - BasketWidth; //вернуть её на границу
+            }
+        }
+
+        //Функция выводит текущий счет
+        function drawScore() {
+            ctx.font = "36px Courier";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            ctx.fillText("Счет: " + score + '/' + maxscore, 20, 20);
+        }
+
+        //пишет название игры
+        function drawName() {
+            ctx.font = "36px Courier";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            ctx.fillText("Лови фрукты!", width - 270, 20);
+        }
+
+        //Функция выводит остаток жизней
+        function drawHearts() {
+            ctx.font = "36px Courier";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            ctx.fillText(":" + lives, 65, 80);
+        }
+
+        function gameOver() {
+            clearInterval(intervalId); //останавливаем основную функцию, очищая интервал её вызова
+            ctx.font = "60px Courier";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            if (lives == 0) { //если не осталось жизней, то
+                ctx.fillText("ПОРАЖЕНИЕ :(", width / 2, height / 2); //пишет ЭТО
+            } else { //иначе
+                ctx.fillText("ПОБЕДА!", width / 2, height / 2); //пишет другое
+            }
+        }
+
+        //Функция готовит случайное целое число
+        function randomInt(n1, n2) { //Случайное целое из интервала [n1,n2]
+            return Math.floor(Math.random() * (n2 - n1 + 1)) + n1;
+        }
+
+        //следим за клавишами
+        window.addEventListener('keydown', keyDownListener);
+
+        function keyDownListener(event) {
+            keyPresses[event.key] = true;
+        }
+        window.addEventListener('keyup', keyUpListener);
+
+        function keyUpListener(event) {
+            keyPresses[event.key] = false;
+        }
+    </script>
+</body>
+
+</html>
