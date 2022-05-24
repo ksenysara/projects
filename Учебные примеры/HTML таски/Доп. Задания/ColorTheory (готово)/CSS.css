@@ -1,0 +1,110 @@
+body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 85px;
+    padding-right: 85px;
+    background-color: rgb(255, 245, 231);
+    color: rgb(5, 3, 0);
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+p.menu {
+    text-align: center;
+    font-family: "Comic Sans MS";
+    font-size: 20px;
+}
+
+a, b.b {
+    display: inline-block;
+    border: 1.5px #bc96d3 solid;
+    border-radius: 10px;
+    color: #02111B;
+    background-color: #bc96d3;
+    padding: 7px;
+}
+
+h1 {
+    text-align: center;
+    border: 4px #bc96d3 solid;
+    font-family: "Comic Sans MS";          
+    font-size: 80px;
+    border-radius: 25px;
+    background-color: #d0a9e9;
+}
+
+.red {
+    color: rgb(46, 0, 0);
+    background-color: #ff6f59;
+}
+
+.orange {
+    background-color: rgb(255, 166, 0);
+}
+
+.yellow {
+    background-color: rgb(255, 255, 113);
+}
+
+.green {
+    background-color: rgb(82, 172, 82);
+}
+
+.blue {
+    background-color: rgb(102, 102, 255);
+}
+
+.violet {
+    background-color: rgb(255, 143, 255);
+}
+
+.black {
+    background-color: rgb(63, 63, 63);
+}
+
+.white {
+    background-color: white;
+    border: 1px #b8b8b8 solid;
+    color: #666666;
+}
+
+.grey {
+    background-color: rgb(170, 170, 170);
+}
+
+.beige {
+    background-color: beige ;
+    border: 1px #b8b8b8 solid;
+    color: #313131;
+}
+
+.ivory-color {
+    background-color: ivory;
+    border: 1px #b8b8b8 solid;
+    color: #666666;
+}
+
+h2 {
+    background-color: antiquewhite;
+}
+
+.top {
+    border-top: 2px #bc96d3 solid;
+    border-radius: 5px;
+    padding-top: 10px;
+}
+
+.bottom {
+    border-bottom: 2px #bc96d3 solid;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}

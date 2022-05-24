@@ -1,0 +1,75 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+th, td {
+  border: 1px solid #746201;
+}
+
+table {
+  border-collapse: collapse; 
+}
+
+th {
+  background-color: #170350;
+  color: #FDF0AE;
+  height: 25px;
+  width: 110px;
+}
+
+td {
+  background-color: #FDF0AE;
+  color: #998A3C;
+  height: 40px;
+  text-align: center;
+  padding: 0;
+}
+
+caption {
+  color: #740701;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 36px;
+  font-weight: bold;  
+  font-style: italic;
+  text-align: right;
+  padding-right: 50px;
+  padding-bottom: 10px;
+}
+
+.info {
+  background-color: #FFFFFF;
+  color: #170350;
+  font-size: 16px;
+  font-weight:normal
+}
+
+span {
+  font-size: 30px;
+}
+
+.bull-1 {
+  color: #F51207;
+}
+
+.bull-2 {
+  color: #3D17A8;
+}
+
+.bull-3 {
+  color: #015A0C;
+}
+
+.happy {
+  color: #F51207;
+}
+
+.lesson {
+  color: #3D17A8;
+}
+
+.ekzam {
+  font-size: 30px;
+  color: #015A0C;
+}

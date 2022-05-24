@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <script>
+        //создаём массивы со словами
+        let randomBodyParts = ["спина", "рука", "нога", "голова", "стопа", "улыбка", "почка", "шея"];
+
+        let randomAdjectives = ["вонючая", "унылая", "дурацкая", "глупая", "большая", "неповоротливая", "косоглазая"];
+
+        let randomAnBodyParts = ["передняя лапа", "башка", "задняя лапа", "морда", "спина", "шея"]
+
+        let randomWords = ["мухи", "выдры", "дубины", "мартышки", "крысы", "рыбы", "собаки"];
+
+
+        //с помощью [Math.floor(Math.random() * randomBodyParts.length)] выбираем рандомное слово (* длина массива значит любое число от 0 до длины массива) и записываем его в переменную
+        let randomBodyPart = randomBodyParts[Math.floor(Math.random() * randomBodyParts.length)];
+
+        let randomAdjective = randomAdjectives[Math.floor(Math.random() * randomAdjectives.length)];
+
+        let randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+
+        let randomAnBodyPart = randomAnBodyParts[Math.floor(Math.random() * randomAnBodyParts.length)];
+
+        //объявляем массив, который будет нашей дразнилкой. Текстовые элементы + переменные (где записаны рандомные слова) 
+
+        let randomArr = ["У тебя", randomBodyPart, "ещё более", randomAdjective, ", чем", randomAnBodyPart, "у", randomWord, "!!!"]
+
+        //с помощью join() скрепляем массив пробелами и записываем как строку
+
+        let randomInsult = randomArr.join(' ')
+
+        //выводим строку на экран
+
+        document.write(randomInsult)
+    </script>
+
+</body>
+
+</html>

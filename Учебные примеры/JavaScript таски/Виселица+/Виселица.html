@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html> 
+  <head> 
+    <meta charset="utf-8"> 
+    <title>Виселица!</title> 
+  </head>
+  
+  <body background="hangman_stock_photo-g.jpg"> 
+    <h1 style='color:#FFFFFF'>Виселица!</h1> 
+    <script> 
+    
+      let words = [
+        "программа", 
+        "катастрофа", 
+        "компьютер", 
+        "оладушек",
+        "человек",
+        "ножницы",
+        "фортепиано",
+        "оператор",
+        "конфета",
+        "пароход",
+        "ресторан",
+        "вселенная",
+        "яхочуестьдайтеестьпж",
+        "лягушечка"
+      ];
+      
+      let name = prompt("Как вас зовут?");
+      if (name == "") {
+        document.write("<span style='color:#FFFFFF'>Привет, Незнакомец! Игра началась! <br>Но если вы ошибётесь пять раз, то она закончится...<br> Обновите страницу, когда это произойдёт :)</span>");  //решила попробовать обойтись без css и проверить, будет ли работать span в скрипте
+      } else {
+      document.write("<span style='color:#FFFFFF'>Привет, " + name + "! Игра началась!<br>Но если вы ошибётесь пять раз, то она закончится...<br> Обновите страницу, когда это произойдёт :)</span>" ); 
+      }
+
+
+      let word = words[Math.floor(Math.random() * words.length)];
+      let answerArray = [];
+      let remainingLetters = word.length;             //изначально оставшихся букв столько же, сколько и всего букв в слове
+      let newRemainingLetters = remainingLetters;
+      
+      for (let i = 0; i < word.length; i++) {         //заполняем места для букв
+        answerArray[i]  = "_"; 
+      }
+      
+      let mistakes = 5;               //количество ошибок
+
+      while (remainingLetters > 0 && mistakes !== 0) {
+
+        alert(answerArray.join(" "));
+        
+        let guess = prompt("Угадайте букву или нажмите ''Отмена'' для выхода из игры.");   //это буква, введённая пользователем
+        
+        if (guess === null) {
+          break;
+        } else if (guess.length > 1) {
+          alert("Пожалуйста, введите только ОДНУ букву."); 
+        } else { 
+          guess = guess.toLowerCase();
+          for (let j = 0; j < word.length;  j++) {
+            if (answerArray[j] === guess) {
+              alert("Ой! Ты эту уже угадывал!");                //может быть этот бреак уберу
+              break;
+            } else
+            if (word[j] === guess) { 
+              answerArray[j] = guess;
+              remainingLetters--;             //на одну неугаданную букву меньше
+            }
+          } 
+        }
+        if (newRemainingLetters == remainingLetters) {
+          mistakes--
+        }
+        newRemainingLetters = remainingLetters
+      }
+
+      if (mistakes === 0) {
+        alert(answerArray.join(" "));
+        alert("Ой... Кажется ты допустил(а) слишком много ошибок... Словечко было ''"  + word + "'' :)")
+      } else if (remainingLetters === 0) {
+          alert("Отлично! Ты отгадал(а) слово ''" + word + "'' :)"); 
+        } 
+      
+    </script> 
+  </body> 
+</html> 

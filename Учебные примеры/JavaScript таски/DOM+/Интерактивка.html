@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <script>
+        /*let timeUp = function () {
+                alert("Время вышло!");
+                clearTimeout(timer)
+              };
+
+              let timer = setTimeout(timeUp, 3000);
+              document.write(timer);*/
+
+        let counter = 1;
+        let printMessage = function() {
+            document.write("Ты смотришь в консоль уже " + counter + " сек<br>"); //пишем это и прибавляем к counter 1
+            counter++;
+        };
+
+        let intervalId = setInterval(printMessage, 1000); //каждую секунду вызываем printMessage
+        /*let timerId = setTimeout(stop, 10000);
+
+        function stop() {
+          clearInterval(intervalId);
+          clearTimeout(timerId);
+        }*/
+    </script>
+</body>
+
+</html>

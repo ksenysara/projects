@@ -1,0 +1,62 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Задание 2 - Функции</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+    <script>
+        // Создайте здесь свои функции
+        let pickWord = function () {
+            let words = [ 
+                "программа",
+                "макака",
+                "конфета",
+                "оладушек"
+            ];
+            return words[Math.floor(Math.random() * words.length)];
+        };
+
+        let setupAnswerArray = function (word) {
+            let answerArray = [];
+            for (let i = 0; i < word.length; i++) {
+                answerArray[i] = "_";
+            }
+            return answerArray;
+        };
+
+        let showPlayerProgress = function (answerArray) {
+            alert(answerArray.join(" "));
+        };
+
+        let getGuess = function () {
+            return prompt("Угадайте букву или нажмите Отмена для выхода из игры.");
+        };
+            
+        let updateGameState = function (guess, word, answerArray, col) {
+            for (let j = 0; j < word.length; j++) {
+            if (word[j] === guess && answerArray[j] === "_") {
+              answerArray[j] = guess;
+              remainingLetters--;
+            } else {
+              col++;
+            }   
+          }
+          return col;
+        };
+
+        let  showAnswerAndCongratulatePlayer = function (answerArray, win) {
+            if (win) {
+                alert(answerArray.join(" "));
+                alert("Отлично! Было загадано слово " + word);
+            } else {
+                alert("Увы, но Вы проиграли :( Было загадано слово " + word);
+            }
+        };
+        
+
+    </script>
+    
+    </body>
+</html>

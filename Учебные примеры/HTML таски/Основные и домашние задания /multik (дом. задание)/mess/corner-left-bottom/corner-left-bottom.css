@@ -1,0 +1,107 @@
+﻿.p44 {
+	position:absolute;
+	top:314px; left:0;
+	width:48px; height:142px;
+	background-image:url('img-LB/Puzzle_44.png');
+}
+.p59 {
+	position:absolute;
+	top:456px; left:0;
+	width:48px; height:72px;
+	background-image:url('img-LB/Puzzle_59.png');
+}
+.p75 {
+	position:absolute;
+	top:528px; left:0;
+	width:48px; height:150px;
+	background-image:url('img-LB/Puzzle_75.png');
+}
+.p60 {
+	position:absolute;
+	left:48px; top:456px;
+	width:165px; height:72px;
+	background-image:url('img-LB/Puzzle_60.png');
+}
+.p76 {
+	position:absolute;
+	left:48px; top:528px;
+	width:165px; height:53px;
+	background-image:url('img-LB/Puzzle_76.png');
+}
+.p61 {
+	position:absolute;
+	left:213px; width:41px;
+	top:456px; height:125px;
+	background-image:url('img-LB/Puzzle_61.png');
+}
+.p77 {
+	position:absolute;
+	left:254px; width:130px;
+	top:528px; height:53px;
+	background-image:url('img-LB/Puzzle_77.png');
+}
+.p87 {
+	position:absolute;
+	left:48px; top:581px;
+	width:165px; height:97px;
+	background-image:url('img-LB/Puzzle_87.png');
+}
+/**/
+.p88 {
+	position:absolute;
+	left:213px; top:581px;
+	width:171px; height:97px;
+	background-image:url('img-LB/Puzzle_88.png');
+}
+.p89 {
+	position:absolute;
+	left:384px; top:581px;
+	width:65px; height:97px;
+	background-image:url('img-LB/Puzzle_89.png');
+}
+.p99 {
+	position:absolute;
+	top:678px; left:0;
+	width:48px; height:42px;
+	background-image:url('img-LB/Puzzle_99.png');
+}
+
+
+/**/
+.p100 {
+	position:absolute;
+	top:678px; left:48px;
+	width:165px; height:42px;
+	background-image:url('img-LB/Puzzle_100.png');
+}
+.p101 {
+	position:absolute;
+	top:678px; left:213px;
+	width:41px; height:42px;
+	background-image:url('img-LB/Puzzle_101.png');
+}
+.p102 {
+	position:absolute;
+	top:678px; left:254px;
+	width:130px; height:42px;
+	background-image:url('img-LB/Puzzle_102.png');
+}
+.p103 {
+	position:absolute;
+	top:678px; left:384px;
+	width:65px; height:42px;
+	background-image:url('img-LB/Puzzle_103.png');
+}
+.p104 {
+	position:absolute;
+	top:678px; left:449px;
+	width:59px; height:42px;
+	background-image:url('img-LB/Puzzle_104.png');
+}
+.p105 {
+	position:absolute;
+	top:678px; left:508px;
+	width:112px; height:42px;
+	background-image:url('img-LB/Puzzle_105.png');
+}
+

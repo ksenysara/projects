@@ -1,0 +1,24 @@
+table {
+    border-collapse: collapse;  
+}
+
+td, th {
+    border: 1px solid #E95000;
+}
+
+caption {
+    background-color: #FFD79A;
+}
+
+.orange {
+    background-color: #E95000;
+    color: #FFD79A;
+}
+
+.lalala {
+    background-color: #FFD79A;
+}
+
+body {
+    color: #280E00;
+}

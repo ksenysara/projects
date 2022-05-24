@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Мячик</title>
+    <meta charset="utf-8">
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="300"></canvas>
+
+    <script>
+        let canvas = document.getElementById("canvas"); //обращаемся к canvas
+        let ctx = canvas.getContext("2d"); //рисуем в 2D
+
+        //ширина и высота равны ширине и высоте canvas
+        var width = canvas.width;
+        var height = canvas.height;
+
+        //конструктор 
+        let Ball = function() {
+            this.x = 1; //координаты
+            this.y = 10; //координаты
+            this.xSpeed = Math.random(1, 5) * 10; //на столько пикселей будет сдвигаться по иксу
+            this.ySpeed = Math.random(-5, -1) * 10; //на столько пикселей будет сдвигаться по игреку
+            this.color; //цвет
+        };
+
+        //функция рисования круга/окружности
+        let circle = function(x, y, radius, fillCircle) { //параметры - координаты, радиус, заполнение
+            ctx.beginPath(); //начало нового рисунка
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false); //рисуем круг
+
+            if (fillCircle) { //если передали true
+                ctx.fill(); //закрашиваем
+            } else { //иначе
+                ctx.stroke(); //рисуем окружность
+            }
+        };
+
+        //массив с цветами
+        let colors = [
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "blue",
+            "purple"
+        ];
+
+        Ball.prototype.draw = function() {
+            ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)]; //выбираем рандомный цвет
+            circle(this.x, this.y, 3, true); //вызываем функшн и передаём ей параметры
+        };
+
+        Ball.prototype.move = function() {
+            this.x += this.xSpeed; //увеличиваем координаты на значение this.xSpeed
+            this.y += this.ySpeed; //увеличиваем координаты на значение this.ySpeed
+        };
+
+        //проверка положения: если мячик за пределами холста
+        Ball.prototype.checkCollision = function() {
+            if (this.x < 0 || this.x > width) { //если х мячика меньше 0 или больше ширины
+                this.xSpeed = -this.xSpeed; //меняем иксовую скорость на ей противоположную
+            }
+
+            if (this.y < 0 || this.y > height) { //если у мячика меньше 0 или больше высоты
+                this.ySpeed = -this.ySpeed; //меняем игриковую скорость на ей противоположную
+            }
+        };
+
+        let ballsCount = 10; //мячиков будет 10
+        let balls = []; //пустой массив
+
+        //делаем мячики и добавляем их в массив
+        for (i = 0; i < ballsCount; i++) { //пока i < ballsCount, прибавляем к ней 1 и
+            let ball = new Ball() //создаём объект-мячик
+            balls.push(ball); //суём его в массив
+        }
+
+        //вызываем animation каждые 30 мс
+        setInterval(animation, 30)
+
+        function animation() {
+            ctx.clearRect(0, 0, width, height); //чистим, чистим... Очищаем весь канвас
+
+            //"раздача" анимации
+            for (var i = 0; i < balls.length; ++i) { //пока i < balls.length и прибавляем ей 1
+                balls[i].draw(); //рисуем...
+                balls[i].move(); //двигаем...
+                balls[i].checkCollision(); //и проверяем положение мячика номер i из массива
+            }
+        }
+    </script>
+</body>
+
+</html>

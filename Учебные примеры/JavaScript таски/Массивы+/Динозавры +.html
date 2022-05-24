@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <script>
+        //объявим пустой массив 
+        let dinosaurs = [];
+
+        //var dinosaurs = ["Тираннозавр", "Велоцираптор","Стегозавр","Трицератопс","Брахиозавр","Птеранодон", "Апатозавр", "Диплодок", "Компсогнат" ]; 
+
+        //document.write(dinosaurs[4]);
+
+        dinosaurs.push("Стегозавр")
+        dinosaurs.push("Трицератопс", "Брахиозавр", "Птеранодон", ) //push добавляет что-то в конец массива
+
+
+        let Dino1 = ["Тираннозавр", "Велоцираптор"]
+        let Dino2 = ["Апатозавр", "Диплодок", "Компсогнат"]
+
+        dinosaurs1 = Dino1.concat(dinosaurs, Dino2) //firstArray.concat(otherArray/Arrays). concat склеивает массивы
+
+        document.write(dinosaurs1)
+            // pop изымает самый первый элемент массива
+    </script>
+
+</body>
+
+</html>

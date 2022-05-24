@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body background="fon.jpg">
+    <h2>Ваш корабль наконец причалил! Пора искать клад!</h2>
+    <img id="map" width="800" height="800" src="treasuremap.png">
+    <p id="distance"></p>
+
+    <script>
+        let getRandomNumber = function(size) { // Получить случайное число от 0 до size
+            return Math.floor(Math.random() * size);
+        };
+
+        let map = document.getElementById("map")
+        let width = map.width;
+        let height = map.height;
+
+        let target = { // Случайные координаты клада 
+            x: getRandomNumber(width),
+            y: getRandomNumber(height)
+        };
+
+        let distanceText = document.getElementById("distance")
+        let clicks = 0;
+        let remainingClicks = 50;
+
+        let getDistance = function(event, target) { // Вычислить расстояние от клика (event) до клада (target)
+            let diffX = event.offsetX - target.x;
+            let diffY = event.offsetY - target.y;
+
+            return Math.sqrt(diffX * 2 + diffY * 2); //квадратный корень окружности координаты стоп чего... Пифагор, не мучай людей...
+        };
+
+        //// Получить для расстояния строку подсказки. Выводим на экран с помощью функции сообщения, которые зависят от близости к кладу
+
+        let getDistanceHint = function(distance) {
+            if (distance < 30) {
+                return "Обожжешься! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 40) {
+                return "Очень горячо! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 55) {
+                return "Горячо! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 85) {
+                return "Тепло! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 120) {
+                return "Прохладненько! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 185) {
+                return "Холодновато! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 240) {
+                return "Холодно! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 290) {
+                return "Очень холодно! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            if (distance < 350) {
+                return "Очень-очень холодно! (Осталось лопат на раскопки:" + remainingClicks + ")";
+            }
+            return "Замерзнешь! (Осталось лопат на раскопки:" + remainingClicks + ")";
+        };
+
+        map.onclick = function(event) { //обрабатывает клики по карте, прибавляет клики и уменьшает кол-во ошибок
+            clicks++
+            remainingClicks--
+
+            var distance = getDistance(event, target); // Получаем расстояние от места клика до клада 
+
+            var distanceHint = getDistanceHint(distance); // Преобразуем расстояние в подсказку 
+
+            // Записываем в элемент distance новую подсказку 
+            distanceText.innerHTML = distanceHint;
+
+            if (remainingClicks == 0) {
+                alert("Вы сделали слишком много ошибок! Сожалею, но вы сломали все свои лопаты(")
+            }
+
+            // Если клик был достаточно близко, поздравляем с победой 
+            if (distance < 20) {
+                alert("Сокровища найдены! Вы останавливались для раскопок " + clicks + " раз и потратили столько же лопат");
+            }
+        }
+    </script>
+</body>
+
+</html>

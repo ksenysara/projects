@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Гоночки!</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        //объявим конструктор Car со свойствами x, y, draw() и параметрами-координатами
+        let Car = function(x, y) {
+            this.x = x;
+            this.y = y;
+
+            this.draw(); //присваивается картинка
+        };
+
+        //Объявим метод (функция-часть_объекта)
+        Car.prototype.draw = function() {
+            this.carImage = new Image(); //пусть картинка этого объекта = отдельный объект (Image() - тоже конструктор)
+            this.carImage.src = 'car.png'; //определяем путь картинки
+
+            this.carImg = document.createElement('img'); //создаём в документе элемент img
+            this.carImg.setAttribute('src', this.carImage.src); //путь 
+            this.carImg.style.position = "absolute"; //в данном случае считается, что начало отсчета - левый верхний угол
+            this.carImg.style.left = this.x + "px"; //координата x
+            this.carImg.style.top = this.y + "px"; //координата y
+
+            document.body.append(this.carImg); //добавляем картинку в тег body
+        };
+
+        //метод движения вправо
+        Car.prototype.moveRight = function(speed) {
+            this.x += speed; //увеличиваем координату x на speed, передаваемую в функцию параметром
+            this.carImg.style.left = this.x + "px";
+        };
+
+        //создаём машинки. Ключевое слово new указывает JavaScript, что мы вызываем конструктор для создания нового объекта
+        let tesla = new Car(0, 20);
+        let nissan = new Car(0, 200);
+
+        //вызываем moveCar каждые 10 мс
+        let intervalId = setInterval(moveCar, 10);
+
+        function moveCar() {
+            let teslaX = Math.floor(Math.random() * 5); //teslaX = рандомное число от 0 до 5
+            let nissanX = Math.floor(Math.random() * 5); //nissanX = рандомное число от 0 до 5
+
+            tesla.moveRight(teslaX); //teslaX передаётся в качестве параметра в метод moveRight
+            nissan.moveRight(nissanX); //nissanX передаётся в качестве параметра в метод moveRight
+
+            if (tesla.x >= 1000) { //если x-координата ТЕСЛЫ >= 1000, то
+                clearInterval(intervalId); //останавливаем вызов moveCar
+                alert("Победила Тесла!"); //выводим этот текст в сообщение
+            }
+            if (nissan.x >= 1000) { //если x-координата НИССАНА >= 1000, то
+                clearInterval(intervalId); //останавливаем вызов moveCar
+                alert("Победил Ниссан!"); //выводим этот текст в сообщение
+            }
+        }
+    </script>
+</body>
+
+</html>

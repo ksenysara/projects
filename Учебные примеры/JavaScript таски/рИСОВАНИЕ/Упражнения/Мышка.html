@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <canvas id="canvas" width="250" height="250"></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+
+      let circle = function (x, y, radius) {
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+        
+        ctx.fill();
+      };
+
+    canvas.onmousemove = function (event) {
+      let x = event.pageX
+      let y = event.pageY
+
+      let r = Math.floor(Math.random() * 256)
+      let g = Math.floor(Math.random() * 256)
+      let b = Math.floor(Math.random() * 256)
+
+      let color = "rgb(" + r + "," + g + "," + b + ")"
+      ctx.fillStyle = color
+      circle(x, y, 3)
+
+}
+
+    </script>
+  </body>
+</html>

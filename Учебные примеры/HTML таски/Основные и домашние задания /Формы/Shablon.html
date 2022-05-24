@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Форма и ее элементы</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1>Форма и ее элементы</h1>
+        <form>
+            <p>Ваше имя <input type="text"></p>
+            <p>Ваш email <input type="email" required></p>
+            <p>Ваш телефон <input type="tel" placeholder="+(123) 456-78-90"></p>
+            <p>Дата рождения <input type="date"></p>
+            <p>Укажите кол-во <input type="number" min="0"></p>
+            <p>Выберите цвет <input type="color"></p>
+            <p><input type="button" value="Просто кнопка"></p>
+            <p><input type="submit" value="Готово!"></p>
+        </form>
+        
+            <h1>Форма обратной связи</h1>
+        <form>
+          <table>  <!--Тег <table> может быть только внутри тега <table>-->
+            <tr>
+              <td>Как Вас зовут</td>
+              <td><input type="text" size="20"></td>
+            </tr>
+            <tr>
+              <td>Ваш e-mail</td>
+              <td><input type="email" size="20"></td>
+            </tr>
+            <tr>
+              <td>или телефон для связи</td>
+              <td><input type="tel" size="20"></td>
+            </tr>
+            <tr>
+              <td>Ваше сообщение</td>
+              <td><textarea rows="5" cols="20"></textarea></td>  <!--Для сообщения-->
+            </tr>
+            <tr>
+              <td colspan="2"><input class="btn" type="submit" value="Готово!"></td>
+            </tr>
+          </table>
+        </form>
+        
+    </body>
+</html>

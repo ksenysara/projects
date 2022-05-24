@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Canvas</title>
+    <meta charset="utf-8">
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d"); //рисуем в 2D
+
+        let side = canvas.height;
+
+        //функция рисования круга/окружности
+        let circle = function(x, y, radius, fillCircle) { //параметры - координаты, радиус, заполнение
+            ctx.beginPath(); //начало нового рисунка
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false); //рисуем круг
+
+            if (fillCircle) { //если передали true
+                ctx.fill(); //закрашиваем
+            } else { //иначе
+                ctx.stroke(); //рисуем окружность
+            };
+        };
+
+        //функция рисует пчелу
+        let drawBee = function(x, y) {
+            ctx.lineWidth = 2; //ширина линии
+            ctx.strokeStyle = "black"; //цвет линии
+            ctx.fillStyle = "gold"; //цвет закрашивания
+
+            //рисуем круги, из который получится пчела
+            circle(x, y, 8, true);
+            circle(x, y, 8, false);
+            circle(x - 5, y - 11, 5, false);
+            circle(x + 5, y - 11, 5, false);
+            circle(x - 2, y - 1, 2, false);
+            circle(x + 2, y - 1, 2, false);
+        };
+
+        let update = function(coordinate) {
+            //offset — это смещение, определяющее, на сколько нужно изменить текущую координату. 
+            //Мы вычисляем его как Math.random() * 4 - 2, получая случайное число в диапазоне от −2 до 2. 
+            //Логика такая: сам по себе вызов Math.random() вернет случайное значение от 0 до 1, следовательно, Math.random() * 4 даст число от 0 до 4. 
+            //И вычтя 2, мы получим наше случайное число от −2 до 2.
+            let offset = Math.random() * 4 - 2;
+            coordinate += offset; //используем команду coordinate += offset, чтобы изменить координату на величину смещения offset
+
+
+            //если обновлённая координата выходит за канвас, придаём ей значение на его границе
+            if (coordinate > side) { //
+                coordinate = side; //
+            }
+            if (coordinate < 0) { //
+                coordinate = 0; //
+            }
+            return coordinate; //возвращаем координату (записываем её новое значение в переменную)
+        };
+
+        //начальные координаты пчелы (до первого обновления)
+        let x = side / 2;
+        let y = side / 2;
+
+        setInterval(draw, 30); //вызываем функцию каждые 30 мс
+
+        function draw() {
+            ctx.clearRect(0, 0, 200, 200); //очищаем холст
+            drawBee(x, y); //рисуем пчелу, передавая её координаты как параметры
+            x = update(x); //обновляем x
+            y = update(y); //обновляем y
+        };
+    </script>
+</body>
+
+</html>

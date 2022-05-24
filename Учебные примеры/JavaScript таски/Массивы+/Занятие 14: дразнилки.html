@@ -1,0 +1,35 @@
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+  </head>
+
+  <body>
+    <script>
+       
+       let randomBodyParts = ["спина", "рука", "нога", "голова", "стопа", "улыбка", "почка", "шея"];
+
+       let randomAdjectives = ["вонючая", "унылая", "дурацкая", "глупая", "большая", "неповоротливая", "косоглазая" ];
+
+       let randomAnBodyParts = ["передняя лапа", "башка", "задняя лапа", "морда", "спина", "шея"]
+
+       let randomWords = ["мухи", "выдры", "дубины", "мартышки", "крысы", "рыбы", "собаки"];
+
+       let randomBodyPart = randomBodyParts[Math.floor(Math.random() * randomBodyParts.length)];
+
+       let randomAdjective = randomAdjectives[Math.floor(Math.random() * randomAdjectives.length)];
+
+       let randomWord =  randomWords[Math.floor(Math.random() * randomWords.length)];
+
+       let randomAnBodyPart = randomAnBodyParts[Math.floor(Math.random() * randomAnBodyParts.length)];
+
+       let randomInsult = "У тебя " +  randomBodyPart + " ещё более " + randomAdjective + " чем " +  randomAnBodyPart + " у " + randomWord + "!!!";
+
+       document.write(randomInsult)
+
+    </script>
+
+  </body>
+
+</html>

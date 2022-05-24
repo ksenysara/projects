@@ -1,0 +1,28 @@
+﻿html, body {
+	height:calc(100% - 50px);
+}
+
+body {
+	margin:0; padding:0;
+	background-color:#C0C0C0;
+}
+body>div {
+	color:#054367;
+	width:1280px; height:720px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:22px;
+	position:relative;
+	border:12px #333333 groove;
+	background-color:#FFFFCC;
+}
+div.p00 {
+	color:#38ACF5;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+	font-size:3em;
+	font-weight:bold;
+	text-align:center;
+	padding-top:300px;
+	text-shadow:1px 1px 0 #054367;
+}

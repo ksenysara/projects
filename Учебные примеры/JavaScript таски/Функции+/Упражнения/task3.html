@@ -1,0 +1,104 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Задание 2 - Функции</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+
+
+
+    <script>
+        // Создайте здесь свои функции
+        let pickWord = function () {
+            let words = [ 
+                "программа",
+                "макака",
+                "прекрасный",
+                "оладушек"
+            ];
+            return words[Math.floor(Math.random() * words.length)];
+        };
+
+        let setupAnswerArray = function (word) {
+            let answerArray = [];
+            for (let i = 0; i < word.length; i++) {
+                answerArray[i] = "_";
+            }
+            return answerArray;
+        };
+
+        let showPlayerProgress = function (answerArray) {
+            alert(answerArray.join(" "));
+        };
+
+        let getGuess = function () {
+            return prompt("Угадайте букву или нажмите Отмена для выхода из игры.");
+        };
+            
+        let updateGameState = function (guess, word, answerArray, col) {
+            for (let j = 0; j < word.length; j++) {
+            if (word[j] === guess && answerArray[j] === "_") {
+              answerArray[j] = guess;
+              remainingLetters--;
+            } else {
+              col++;
+            }   
+          }
+          return col;
+        };
+
+        let  showAnswerAndCongratulatePlayer = function (answerArray, win) {
+            if (win) {
+                alert(answerArray.join(" "));
+                alert("Отлично! Было загадано слово " + word);
+            } else {
+                alert("Увы, но Вы проиграли :( Было загадано слово " + word);
+            }
+        };
+
+        // -------------------------------------------------------------------------------------------------------------------
+
+        // word: загаданное  слово
+        let word = pickWord();
+
+        // answerArray: итоговый массив
+        let answerArray = setupAnswerArray(word);
+
+        // remainingLetters: сколько букв осталось угадать
+        let remainingLetters = word.length;
+        let errors = 5;
+        let win = true;
+
+        while (remainingLetters > 0 && win) {
+            showPlayerProgress(answerArray);
+            
+            // guess: ответ игрока
+            let guess = getGuess();
+            let col = 0;
+            
+            if (guess === null) {
+                break;
+            } else if (guess.length !== 1) {
+                alert("Пожалуйста, введите одиночную букву.");
+            } else {
+                guess = guess.toLowerCase();
+            // correctGuesses: количество открытых букв
+            let correctGuesses = updateGameState(guess, word, answerArray, col);
+
+            if (correctGuesses === word.length) {
+                errors--;
+
+                if (errors <= 0) {
+                win = false;
+                }
+            }
+            }
+        }
+
+        showAnswerAndCongratulatePlayer(answerArray, win);
+    </script>
+    
+    </body>
+</html>

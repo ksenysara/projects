@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <script>
+        let scores = {
+            ann: 0,
+            kate: 0,
+            dasha: 0
+        };
+
+        while (scores.ann < 1000 && scores.kate < 1000 && scores.dasha < 1000) { //пока очки всех девочек < 1000, прибавляем им по 20, 10, 30
+            scores.ann += 20;
+            scores.kate += 10;
+            scores.dasha += 30;
+        }
+
+        if (scores.ann > scores.kate && scores.ann > scores.dasha) { //если в итоге больше всего очков у ann
+            document.write("Победила Ann! На конфетку)") //пишем это
+        }
+        if (scores.kate > scores.ann && scores.kate > scores.dasha) { //если в итоге больше всего очков у kate
+            document.write("Победила Kate! На конфетку)") //пишем это
+        }
+        if (scores.dasha > scores.kate && scores.dasha > scores.ann) { //если в итоге больше всего очков у dasha
+            document.write("Победила Dasha! На конфетку)") //пишем это
+        }
+    </script>
+
+</body>
+
+</html>

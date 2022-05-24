@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html> 
+  <head> 
+    <meta charset="utf-8"> 
+    <title>Виселица!</title> 
+  </head>
+  
+  <body> 
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <h1>Виселица!</h1> 
+    <script> 
+
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");   //рисуем в 2D
+      
+      let width = canvas.width
+      let height = canvas.height
+
+      let circle = function (x, y, radius, fillCircle) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+
+        if (fillCircle) {
+          ctx.fill();
+        } else {
+          ctx.stroke();
+        }
+      };
+
+      let words = [
+        "программа", 
+        "катастрофа", 
+        "компьютер", 
+        "оладушек",
+        "человек",
+        "ножницы",
+        "фортепиано",
+        "оператор",
+        "конфета",
+        "пароход",
+        "ресторан",
+        "вселенная",
+        "яхочуестьдайтеестьпж",
+        "лягушечка"
+      ];
+
+      let word = words[Math.floor(Math.random() * words.length)];
+      let answerArray = [];
+      let remainingLetters = word.length;             //изначально оставшихся букв столько же, сколько и всего букв в слове
+      let newRemainingLetters = remainingLetters;
+      
+      for (let i = 0; i < word.length; i++) {         //заполняем места для букв
+        answerArray[i]  = "_"; 
+      }
+      
+      let mistakes = 5; 
+
+      
+
+      
+
+
+
+
+
+
+
+    </script> 
+  </body> 
+</html> 

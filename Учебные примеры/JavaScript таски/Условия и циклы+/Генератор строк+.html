@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Генератор строк</title>
+</head>
+
+<body>
+    <script>
+        let alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        let randomString = ""; //пустая строка
+        while (randomString.length < 10) { //пока длина randomString < 10...
+            randomString += alphabet[Math.floor(Math.random() * alphabet.length)]; //...выбираем рандомный символ из alphabet и прибавляем его к randomString
+        }
+        console.log(randomString); //выводим randomString в консоль
+    </script>
+
+</body>
+
+</html>

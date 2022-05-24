@@ -1,0 +1,16 @@
+caption {
+    color: #a1004b;
+}
+
+th {
+    background-color: #86bae2;
+    color: rgb(0, 0, 155);
+}
+
+td, th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;  
+}

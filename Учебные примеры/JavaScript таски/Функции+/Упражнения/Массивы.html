@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>А это дз2 . _.</title>
+  </head>
+  <body>
+    <script>
+
+      function areArraysSame (array1, array2) {
+        if (array1.length !== array2.length) {
+          return false
+        }
+          for (let i = 0; i < array1.length; i++) {
+            if (array1[i] !== array2[i]) {      
+              return false;    
+            }  
+          }  
+          return true;
+      }
+        
+        console.log(areArraysSame([1, 2, 3, 4], [5, 6, 7, 8]));
+        console.log(areArraysSame([1, 2, 3, 4], [1, 2, 3, 4]));
+        console.log(areArraysSame([1, 2, 3, 4], [1, 2, 3]));
+
+    </script>
+  </body>
+</html>

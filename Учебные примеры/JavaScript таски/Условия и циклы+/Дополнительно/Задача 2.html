@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Задача 2</title>
+  </head>
+
+  <body>
+    <script>
+
+        let A = 7;                        //создаю переменные и пока что пустую строку
+        let B = 78;
+        let numbers = "";
+
+        for (let i = A + 1; i < B; i++) {
+          if (i % 2 == 0) {                 //если при делении (знак процента использован как знак деления) i на 2 остаток будет равен нулю, то добавляем это число в строку numbers (числа разделяются точкой с запятой и пробелом)
+            numbers += i + "; ";
+          }
+        }
+
+        document.write(numbers)
+        
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿.p86 {
+	position:absolute;
+	top:528px; left:1188px;
+	width:92px; height:53px;
+	background-image:url('img-RB/Puzzle_86.png');
+}
+.p97 {
+	position:absolute;
+	left:1054px; width:98px;
+	top:581px; height:97px;
+	background-image:url('img-RB/Puzzle_97.png');
+}
+.p98 {
+	position:absolute;
+	left:1152px; width:128px;
+	top:581px; height:97px;
+	background-image:url('img-RB/Puzzle_98.png');
+}
+.p108 {
+	position:absolute;
+	top:678px; left:769px;
+	width:110px; height:42px;
+	background-image:url('img-RB/Puzzle_108.png');
+}
+.p109 {
+	position:absolute;
+	top:678px; left:879px;
+	width:175px; height:42px;
+	background-image:url('img-RB/Puzzle_109.png');
+}
+.p110 {
+	position:absolute;
+	top:678px; left:1054px;
+	width:98px; height:42px;
+	background-image:url('img-RB/Puzzle_110.png');
+}
+.p111 {
+	position:absolute;
+	top:678px; left:1152px;
+	width:36px; height:42px;
+	background-image:url('img-RB/Puzzle_111.png');
+}
+.p112 {
+	position:absolute;
+	top:678px; left:1188px;
+	width:92px; height:42px;
+	background-image:url('img-RB/Puzzle_112.png');
+}
+
+

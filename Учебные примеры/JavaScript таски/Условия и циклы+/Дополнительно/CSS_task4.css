@@ -1,0 +1,29 @@
+table {
+    border-collapse: collapse; 
+    font-size: 26px;
+    margin: 62px;
+    text-align: center;
+}
+
+td, th {
+    border: 1px solid #040b25;
+    padding: 18px;
+    width: 38px;
+}
+
+caption {
+    color: #4E5A8B
+}
+
+td.title {
+    background-color: #4E5A8B;
+    color: bisque;
+}
+
+td.selected {
+    background-color: #962a00;
+    color: rgb(194, 194, 194);
+    font-weight: bold;
+
+}
+

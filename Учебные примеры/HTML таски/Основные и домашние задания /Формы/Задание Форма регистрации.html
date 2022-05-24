@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Форма регистрации</title>
+        <meta charset="utf-8">
+        <link href="Формы регистрации.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <h1>Форма регистрации</h1>
+        <p>Обязательные для заполнения поля выделены цветным фоном.</p>
+
+        <form>
+
+            <table> 
+                
+                <tr>
+                    <td class="required">Ваше имя</td>
+                    <td class="required"><input type="text"  required></td>
+                </tr>
+
+                <tr>
+                    <td>Ваша фамилия</td>
+                    <td><input type="text" ></td>                    
+                </tr>
+
+                <tr>
+                    <td>Придумайте логин</td>
+                    <td><input type="text"></td>
+                </tr>
+
+                <tr>
+                    <td class="required">Ваш email</td>
+                    <td class="required"><input type="email" placeholder="login@domen.ru" required></td>
+                </tr>
+
+                <tr>
+                    <td class="required">Ваш номер телефона</td>
+                    <td class="required"><input type="tel" placeholder="+7 (123) 456-78-90" required></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="btn"><input type="submit" class="btn" value="Зарегистрироваться"></td>
+                  </tr>
+            </table>
+
+        </form>
+
+    </body>
+</html>

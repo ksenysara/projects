@@ -1,0 +1,16 @@
+table {
+    border-collapse: collapse;  
+}
+
+td, th {
+    border: 1px solid blue;
+}
+
+caption {
+    color: #4E5A8B
+}
+
+th {
+    background-color: grey;
+    color: white
+}

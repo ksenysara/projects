@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Мяч</title>
+    <meta charset="utf-8">
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="1851" height="850"></canvas>
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d"); //рисуем в 2D
+
+        var width = canvas.width;
+        var height = canvas.height;
+
+        let Ball = function() {
+            this.x = 0;
+            this.y = 0;
+            this.xSpeed = -3;
+            this.ySpeed = 4;
+        };
+
+        var circle = function(x, y, radius, fillCircle) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+
+            if (fillCircle) {
+                ctx.fill();
+            } else {
+                ctx.stroke();
+            }
+        };
+
+        Ball.prototype.draw = function() {
+            let r = Math.floor(Math.random() * 256)
+            let g = Math.floor(Math.random() * 256)
+            let b = Math.floor(Math.random() * 256)
+
+            let color = "rgb(" + r + "," + g + "," + b + ")"
+            ctx.fillStyle = color
+            circle(this.x, this.y, 3, true);
+        };
+
+        Ball.prototype.move = function() {
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+        };
+
+        Ball.prototype.checkCollision = function() {
+            if (this.x < 0 || this.x > width) {
+                this.xSpeed = -this.xSpeed;
+            }
+
+            if (this.y < 0 || this.y > height) {
+                this.ySpeed = -this.ySpeed;
+            }
+        };
+
+        var ball = new Ball();
+
+        setInterval(animation, 1)
+
+        function animation() {
+            ctx.clearRect(0, 0, 2, 2);
+
+            ball.draw();
+            ball.move();
+            ball.checkCollision();
+        }
+    </script>
+</body>
+
+</html>

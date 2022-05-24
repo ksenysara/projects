@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="utf-8">
+    <style>
+      canvas {border: 1px solid black;}
+    </style>
+  </head>
+
+  <body>
+    <canvas id="canvas" width="2000" height="2000"></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");   //рисуем в 2D
+
+      /*ctx.fillRect= "red";
+      ctx.fillRect(10, 10, 100, 100);     //первые два числа - координаты, вторые - высота и ширина
+
+      ctx.strokeStyle = "blue";
+      ctx.lineWidth = 4;
+      ctx.strokeRect(5, 5, 110, 110);
+
+      ctx.strokeStyle = "Turquoise";
+      ctx.lineWidth = 4;
+
+      ctx.beginPath();
+      ctx.moveTo(10, 10);
+      ctx.lineTo(60, 60);
+      ctx.moveTo(60, 10);
+      ctx.lineTo(10, 60);
+      ctx.stroke();  //просто нарисовать
+
+      ctx.fillStyle = "blue";
+
+      ctx.beginPath();
+      ctx.moveTo(100, 100);
+      ctx.lineTo(100, 60);
+      ctx.lineTo(130, 30);
+      ctx.lineTo(160, 60);
+      ctx.lineTo(160, 100);
+      ctx.lineTo(100, 100);
+      ctx.fill();   //залить
+
+      
+      ctx.beginPath();
+      ctx.arc(75, 75, 50, 0, Math.PI * 2, false);  //координаты, радиус, углы, false - по часовой
+      ctx.strokeStyle = "green";
+      ctx.stroke();*/
+
+      let circle = function (x, y, radius) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+        ctx.stroke();
+      };
+          //это функция, что мы рисуем окружности
+
+
+      ctx.lineWidth = 4;
+
+          //теперь шесть окружностей
+      
+      let colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+      let radius = 10;
+
+      for (let i = 0; i < colors.length; i++) {
+        ctx.strokeStyle = colors[i];
+        circle(100, 100, radius) 
+        radius += 10;
+      }
+
+
+    </script>
+  </body>
+</html>

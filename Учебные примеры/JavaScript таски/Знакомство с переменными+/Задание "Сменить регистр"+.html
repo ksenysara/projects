@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Сменить регистр</title>
+</head>
+
+<body>
+    <script>
+        //создаём искажённую строку "эЙ, кАК деЛа?"
+        let stroka1 = "эЙ, кАК деЛа?";
+        let stroka2 = stroka1.slice(0, 1) //строка2 - это 1 символ первой строки
+        let stroka3 = stroka1.slice(1, 13); //строка3 - это со 2 по 13 символы первой строки
+
+
+
+        document.write(stroka2.toUpperCase() + stroka3.toLowerCase()) //выводим склеенные строки 2/3 (toUpperCase() -сделает все символы в верхнем регистре, toLowerCase() - в нижнем)
+    </script>
+</body>
+
+</html>

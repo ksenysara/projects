@@ -1,0 +1,79 @@
+﻿.p14 {
+	position:absolute;
+	left:1188px; top:0px;
+	width:92px; height:78px;
+	background-image:url('img-RT/Puzzle_14.png');
+}
+.p13 {
+	position:absolute;
+	left:1152px; top:0px;
+	width:36px; height:78px;
+	background-image:url('img-RT/Puzzle_13.png');
+}
+.p12 {
+	position:absolute;
+	left:1054px; top:0px;
+	width:98px; height:78px;
+	background-image:url('img-RT/Puzzle_12.png');
+}
+.p11 {
+	position:absolute;
+	left:936px; top:0px;
+	width:118px; height:78px;
+	background-image:url('img-RT/Puzzle_11.png');
+}
+.p10 {
+	position:absolute;
+	left:879px; top:0px;
+	width:57px; height:78px;
+	background-image:url('img-RT/Puzzle_10.png');
+}
+.p28 {
+	position:absolute;
+	left:1054px; width:98px;
+	top:78px; height:210px;
+	background-image:url('img-RT/Puzzle_28.png');
+}
+.p27 {
+	position:absolute;
+	left:936px; width:118px;
+	top:78px; height:210px;
+	background-image:url('img-RT/Puzzle_27.png');
+}
+.p26 {
+	position:absolute;
+	left:879px; width:57px;
+	top:78px; height:210px;
+	background-image:url('img-RT/Puzzle_26.png');
+}
+.p29 {
+	position:absolute;
+	left:1152px; width:36px;
+	top:78px; height:210px;
+	background-image:url('img-RT/Puzzle_29.png');
+}
+.p30 {
+	position:absolute;
+	left:1188px; top:78px;
+	width:92px; height:210px;
+	background-image:url('img-RT/Puzzle_30.png');
+}
+.p43 {
+	position:absolute;
+	left:1152px; top:288px;
+	width:128px; height:26px;
+	background-image:url('img-RT/Puzzle_43.png');
+}
+.p58 {
+	position:absolute;
+	top:314px; left:1188px;
+	width:92px; height:142px;
+	background-image:url('img-RT/Puzzle_58.png');
+}
+.p57 {
+	position:absolute;
+	left:1152px; width:36px;
+	top:314px; height:142px;
+	background-image:url('img-RT/Puzzle_57.png');
+}
+

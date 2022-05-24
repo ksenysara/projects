@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <script>
+        //объявим конструктор Car со свойствами x, y, draw() и параметрами-координатами
+        let Car = function(x, y) {
+            this.x = x;
+            this.y = y;
+
+            this.draw();
+        };
+
+        //Объявим метод (функция-часть_объекта)
+        Car.prototype.draw = function() {
+            this.carImage = new Image(); //пусть картинка этого объекта = отдельный объект (Image() - тоже конструктор)
+            this.carImage.src = 'car.png'; //определяем путь картинки
+
+            this.carImg = document.createElement('img'); //создаём в документе элемент img
+            this.carImg.setAttribute('src', this.carImage.src); //путь 
+            this.carImg.style.position = "absolute"; //в данном случае считается, что начало отсчета - левый верхний угол
+            this.carImg.style.left = this.x + "px"; //координата x
+            this.carImg.style.top = this.y + "px"; //координата y
+
+            document.body.append(this.carImg); //добавляем картинку в тег body
+        };
+
+        //метод движения вправо
+        Car.prototype.moveRight = function() {
+            this.x += 5; //передвигаем машину на 5 пикселей вправо относительно текущей позиции: Командой this.x += 5 увеличиваем координату x машины на 5
+            this.carImg.style.left = this.x + "px";
+            this.carImg.style.top = this.y + "px";
+        };
+
+        //метод движения влево
+        Car.prototype.moveLeft = function() {
+            this.x -= 5; //передвигаем машину на 5 пикселей влево относительно текущей позиции: Командой this.x -= 5 уменьшаем координату x машины на 5
+            this.carImg.style.left = this.x + "px";
+            this.carImg.style.top = this.y + "px";
+        };
+
+        //метод движения вверх
+        Car.prototype.moveUp = function() {
+            this.y -= 5; //передвигаем машину на 5 пикселей вверх относительно текущей позиции: Командой this.y -= 5 уменьшаем координату y машины на 5
+            this.carImg.style.left = this.x + "px";
+            this.carImg.style.top = this.y + "px";
+        };
+
+        //метод движения вниз
+        Car.prototype.moveDown = function() {
+            this.y += 5; //передвигаем машину на 5 пикселей вниз относительно текущей позиции: Командой this.y += 5 увеличиваем координату y машины на 5
+            this.carImg.style.left = this.x + "px";
+            this.carImg.style.top = this.y + "px";
+        };
+
+        //Ключевое слово new указывает JavaScript, что мы вызываем конструктор для создания нового объекта
+        let tesla = new Car(10, 20);
+        let nissan = new Car(10, 200);
+
+        //вызываем метод движения вправо для теслы
+        tesla.moveRight();
+        tesla.moveRight();
+        tesla.moveRight();
+    </script>
+
+</body>
+
+</html>

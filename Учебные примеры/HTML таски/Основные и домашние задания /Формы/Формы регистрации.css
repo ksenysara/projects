@@ -1,0 +1,25 @@
+td.required {
+    background-color: #fbe8ff;
+}
+
+td.btn {
+    text-align: center;
+  
+}
+
+table {
+    border-collapse: collapse;  
+    border-radius: 2px;
+}
+
+input.btn {
+    color: #740065;
+    background-color: rgb(255, 233, 253);
+    border-color: #ff9eea;
+    border-radius: 3px;
+    padding: 7px;
+}
+
+td {
+    padding: 7px;
+}

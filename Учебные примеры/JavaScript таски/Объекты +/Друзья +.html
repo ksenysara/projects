@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <script>
+        // var anna = {
+        //   name: "Аня",
+        //   age: 11,
+        //   luckyNumbers: [2, 4, 8, 16]
+        //  };
+
+        // var dan = {
+        //   name: "Дэн",
+        //   age: 5,
+        //   luckyNumbers: [3, 9, 40]
+        //  };
+
+        //  var kate = {
+        //   name: "Катя",
+        //   age:  9,
+        //   luckyNumbers: [1, 2, 3]
+        // }; 
+
+        // let friends = [anna, dan, kate]
+
+        // document.write(friends[0].luckyNumbers[1]); 
+
+        //создаём объект без свойств
+
+        var owedMoney = {};
+
+        owedMoney["Паша Галкин"] = 500; //cоздаём объекту свойство "Паша Галкин" со значением 500
+        owedMoney.anna = 700; //cоздаём объекту свойство anna со значением 700
+
+        owedMoney["Паша Галкин"] += 300; //Прибавляем к свойству "Паша Галкин" 300
+        // owedMoney.pasha = owedMoney.pasha + 300;
+        owedMoney.anna -= 400; //отнимаем от значения свойства anna 400
+        // owedMoney.anna = owedMoney.anna - 400;
+
+        document.write(owedMoney["Паша Галкин"], "; ", owedMoney.anna); //напишем долги ребят
+    </script>
+
+</body>
+
+</html>

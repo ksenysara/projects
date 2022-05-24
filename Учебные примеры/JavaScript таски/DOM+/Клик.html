@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <h1 id="mouseClick">Кликни здесь</h1>
+    <!--id используем в скрипте-->
+
+    <script>
+        let headingId = document.getElementById("mouseClick"); //headingId это полученный по id текст из h1
+
+        let clickHandler = function(event) {
+            document.write("Клик! " + event.pageX + " " + event.pageY); //напишем клик и координаты клика
+        };
+
+        headingId.onclick = clickHandler; //прослушиватель события click
+    </script>
+
+</body>
+
+</html>
